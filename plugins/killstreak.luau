@@ -16,24 +16,6 @@ local streakMessages = {
     [20] = { text = "CRAZY!",          r = 0,   g = 255, b = 255 },
 }
 
-local function showStreakHud(player, msg)
-    local hud = {
-        channel     = 4,
-        x           = -1,
-        y           = 0.35,
-        effect      = 2,
-        fxTime      = 0.1,
-        r1          = msg.r,
-        g1          = msg.g,
-        b1          = msg.b,
-        a1          = 255,
-        fadeinTime  = 0.05,
-        fadeoutTime = 1.5,
-        holdTime    = 3.0,
-    }
-    printHudClient(player.Id, hud, player.Name .. " " .. msg.text)
-end
-
 onEvent("playerDied", function(victim)
     local vid = victim.Id
     local killer = victim.Killer
@@ -50,7 +32,21 @@ onEvent("playerDied", function(victim)
         local msg = streakMessages[count]
         if msg then
             printTalk("\x04" .. killer.Name .. " " .. msg.text)
-            showStreakHud(killer, msg)
+            local hud = {
+                channel     = 4,
+                x           = -1,
+                y           = 0.35,
+                effect      = 2,
+                fxTime      = 0.1,
+                r1          = msg.r,
+                g1          = msg.g,
+                b1          = msg.b,
+                a1          = 255,
+                fadeinTime  = 0.05,
+                fadeoutTime = 1.5,
+                holdTime    = 3.0,
+            }
+            printHud(hud, player.Name .. " is a " .. msg.text)
         end
     end
 end)
