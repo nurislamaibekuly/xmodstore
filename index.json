@@ -2,7 +2,7 @@
   {
     "name": "Kill Streak",
     "author": "Nurislam Aibekuly",
-    "description": "Kill Streak",
+    "description": "Kill streak announcements",
     "file": "plugins/killstreak.luau"
   }
 ]
