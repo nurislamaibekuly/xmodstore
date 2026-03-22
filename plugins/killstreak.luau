@@ -27,11 +27,12 @@ onEvent("playerDied", function(victim)
 
     if killer then
         local kid = killer.Id
+        local killerName = killer.Name
         streaks[kid] = (streaks[kid] or 0) + 1
         local count = streaks[kid]
         local msg = streakMessages[count]
         if msg then
-            printTalk("\x04" .. killer.Name .. " " .. msg.text)
+            printTalk("\x04" .. killerName .. " " .. msg.text)
             local hud = {
                 channel     = 4,
                 x           = -1,
@@ -46,7 +47,7 @@ onEvent("playerDied", function(victim)
                 fadeoutTime = 1.5,
                 holdTime    = 3.0,
             }
-            printHud(hud, killer.Name .. " is " .. msg.text)
+            printHud(hud, killerName .. " is " .. msg.text)
         end
     end
 end)
