@@ -8,12 +8,12 @@
 local streaks = {}
 
 local streakMessages = {
-    [3]  = { text = "KILLING SPREE!",  r = 255, g = 100, b = 0   },
-    [5]  = { text = "DOMINATING!",     r = 255, g = 50,  b = 50  },
-    [7]  = { text = "RAMPAGE!",        r = 255, g = 0,   b = 0   },
-    [10] = { text = "UNSTOPPABLE!",    r = 200, g = 0,   b = 255 },
-    [15] = { text = "GODLIKE!",        r = 255, g = 215, b = 0   },
-    [20] = { text = "CRAZY!",          r = 0,   g = 255, b = 255 },
+    [3]  = { text = "is a KILLING SPREE!",  r = 255, g = 100, b = 0   },
+    [5]  = { text = "is DOMINATING!",     r = 255, g = 50,  b = 50  },
+    [7]  = { text = "is RAMPAGE!",        r = 255, g = 0,   b = 0   },
+    [10] = { text = "is UNSTOPPABLE!",    r = 200, g = 0,   b = 255 },
+    [15] = { text = "is GODLIKE!",        r = 255, g = 215, b = 0   },
+    [20] = { text = "is CRAZY!",          r = 0,   g = 255, b = 255 },
 }
 
 onEvent("playerDied", function(victim)
@@ -31,6 +31,7 @@ onEvent("playerDied", function(victim)
         streaks[kid] = (streaks[kid] or 0) + 1
         local count = streaks[kid]
         local msg = streakMessages[count]
+        print("name " .. killerName .. " streak " .. streaks[kid])
         if msg then
             printTalk("\x04" .. killerName .. " " .. msg.text)
             local hud = {
@@ -47,11 +48,15 @@ onEvent("playerDied", function(victim)
                 fadeoutTime = 1.5,
                 holdTime    = 3.0,
             }
-            printHud(hud, killerName .. " is " .. msg.text)
+            printHud(hud, killerName .. " " .. msg.text)
         end
     end
 end)
 
 onEvent("playerRemoved", function(player)
     streaks[player.Id] = nil
+end)
+
+onEvent("playerAdded", function(player)
+    streaks[player.Id] = 0
 end)
