@@ -1,8 +1,8 @@
 [
   {
-    "name": "Test",
-    "author": "Author",
-    "description": "Description",
-    "file": "plugins/test.luau"
+    "name": "Kill Streak",
+    "author": "Nurislam Aibekuly",
+    "description": "Kill Streak",
+    "file": "plugins/killstreak.luau"
   }
 ]
