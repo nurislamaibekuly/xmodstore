@@ -1,4 +1,4 @@
-metadata = {
+ metadata = {
     name        = "Kill Streak",
     author      = "Nurislam Aibekuly",
     description = "Kill streak announcements",
@@ -46,7 +46,7 @@ onEvent("playerDied", function(victim)
                 fadeoutTime = 1.5,
                 holdTime    = 3.0,
             }
-            printHud(hud, player.Name .. " is a " .. msg.text)
+            printHud(hud, killer.Name .. " is " .. msg.text)
         end
     end
 end)
