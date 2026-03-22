@@ -13,7 +13,7 @@ local streakMessages = {
     [7]  = "is on a RAMPAGE!",
     [10] = "is UNSTOPPABLE!",
     [15] = "is GODLIKE!",
-    [20] = "is CRAZY!
+    [20] = "is CRAZY!"
 }
 
 onEvent("playerDied", function(victim)
